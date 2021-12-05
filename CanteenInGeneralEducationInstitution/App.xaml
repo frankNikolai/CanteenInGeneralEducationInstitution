@@ -1,0 +1,57 @@
+﻿<Application x:Class="CanteenInGeneralEducationInstitution.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CanteenInGeneralEducationInstitution"
+             xmlns:viewModel="clr-namespace:CanteenInGeneralEducationInstitution.MVVM.ViewModel"
+             xmlns:viewUser="clr-namespace:CanteenInGeneralEducationInstitution.MVVM.View.User"
+             xmlns:viewAdmin="clr-namespace:CanteenInGeneralEducationInstitution.MVVM.View.Admin"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:DishesViewModel}">
+                <viewUser:DishesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AccountViewModel}">
+                <viewUser:AccountView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:BasketViewModel}">
+                <viewUser:BasketView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EmployeeViewModel}">
+                <viewAdmin:EmployeeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StudentViewModel}">
+                <viewAdmin:StudentsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DinningRoomViewModel}">
+                <viewAdmin:DinningRoomView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SupplyViewModel}">
+                <viewAdmin:SupplyView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:BuffetViewModel}">
+                <viewAdmin:BuffetView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SaleViewModel}">
+                <viewAdmin:SaleView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

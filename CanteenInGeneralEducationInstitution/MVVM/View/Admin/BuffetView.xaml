@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="CanteenInGeneralEducationInstitution.MVVM.View.Admin.BuffetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CanteenInGeneralEducationInstitution.MVVM.View.Admin"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="525" d:DesignWidth="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid VerticalAlignment="Top"
+                  Margin="10"
+                  x:Name="DGridBuffet"
+                  FontSize="14"
+                  AutoGenerateColumns="False"
+                  Grid.Row="0"
+                  Grid.RowSpan="7"
+                  Grid.ColumnSpan="3"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Header="Номер" Width="*"/>
+                <DataGridTextColumn Binding="{Binding name}" Header="Название" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox x:Name="txtNum"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 materialDesign:HintAssist.Hint="Введите номер"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+
+
+        <TextBox x:Name="txtName"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 Grid.Row="2"
+                 materialDesign:HintAssist.Hint="Введите название"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+        <Button Content="Добавить" FontSize="20"
+                Grid.Row="4" Grid.Column="3"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Add_Click"/>
+        <Button Content="Удалить" FontSize="20"
+                Grid.Row="5" Grid.Column="3"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Delete_Click"/>
+        <Button Content="Обновить" FontSize="20"
+                Grid.Row="6" Grid.Column="3"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Update_Click"/>
+    </Grid>
+</UserControl>

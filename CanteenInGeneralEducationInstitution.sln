@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanteenInGeneralEducationInstitution", "CanteenInGeneralEducationInstitution\CanteenInGeneralEducationInstitution.csproj", "{46DDF3EB-9D38-43FC-A850-E7FA55BBAA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanteenInGeneralEducationInstitutionTests", "CanteenInGeneralEducationInstitutionTests\CanteenInGeneralEducationInstitutionTests.csproj", "{3AFD37EC-7835-4F37-8C26-23B3B6023198}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46DDF3EB-9D38-43FC-A850-E7FA55BBAA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46DDF3EB-9D38-43FC-A850-E7FA55BBAA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46DDF3EB-9D38-43FC-A850-E7FA55BBAA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46DDF3EB-9D38-43FC-A850-E7FA55BBAA87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AFD37EC-7835-4F37-8C26-23B3B6023198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AFD37EC-7835-4F37-8C26-23B3B6023198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AFD37EC-7835-4F37-8C26-23B3B6023198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AFD37EC-7835-4F37-8C26-23B3B6023198}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45CBB527-5188-42F1-9019-7BE26DF70501}
+	EndGlobalSection
+EndGlobal

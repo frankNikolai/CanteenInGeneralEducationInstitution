@@ -1,0 +1,1152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buffet">
+          <Key>
+            <PropertyRef Name="ID_Buffet_RK" />
+          </Key>
+          <Property Name="ID_Buffet_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Buffet_Dish">
+          <Key>
+            <PropertyRef Name="ID_Buffet_Dish_RK" />
+          </Key>
+          <Property Name="ID_Buffet_Dish_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Buffet_FK" Type="int" />
+          <Property Name="ID_Dish_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID_Class_RK" />
+          </Key>
+          <Property Name="ID_Class_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" />
+          <Property Name="ID_Employee_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Class_TimeOfUse">
+          <Key>
+            <PropertyRef Name="ID_Class_TimeOfUse_RK" />
+          </Key>
+          <Property Name="ID_Class_TimeOfUse_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Class_FK" Type="int" />
+          <Property Name="ID_TimeOfUse_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Competence">
+          <Key>
+            <PropertyRef Name="ID_Competence_RK" />
+          </Key>
+          <Property Name="ID_Competence_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DinningRoom">
+          <Key>
+            <PropertyRef Name="ID_DinningRoom" />
+          </Key>
+          <Property Name="ID_DinningRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" />
+          <Property Name="ID_Supply_FK" Type="int" />
+          <Property Name="ID_Buffet_FK" Type="int" />
+          <Property Name="ID_TimeOfUse_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="ID_Dish_RK" />
+          </Key>
+          <Property Name="ID_Dish_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cost" Type="money" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee_RK" />
+          </Key>
+          <Property Name="ID_Employee_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="80" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="80" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="80" />
+          <Property Name="ID_Competence_FK" Type="int" />
+          <Property Name="ID_WorkShift_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="ProfessionalArea">
+          <Key>
+            <PropertyRef Name="ID_ProfessionalArea_RK" />
+          </Key>
+          <Property Name="ID_ProfessionalArea_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="ID_Sale_RK" />
+          </Key>
+          <Property Name="ID_Sale_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Student_FK" Type="int" />
+          <Property Name="ID_Sale_Dish_FK" Type="int" />
+          <Property Name="Price" Type="money" />
+        </EntityType>
+        <EntityType Name="Sale_Dish">
+          <Key>
+            <PropertyRef Name="ID_SaleDish_RK" />
+          </Key>
+          <Property Name="ID_SaleDish_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sale_FK" Type="int" />
+          <Property Name="ID_Dish_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID_Student_RK" />
+          </Key>
+          <Property Name="ID_Student_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="80" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="80" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="80" />
+          <Property Name="ID_StudentCategory_FK" Type="int" />
+          <Property Name="ID_Class_FK" Type="int" />
+          <Property Name="Cash" Type="money" />
+        </EntityType>
+        <EntityType Name="StudentCategory">
+          <Key>
+            <PropertyRef Name="ID_StudentCategory_RK" />
+          </Key>
+          <Property Name="ID_StudentCategory_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID_Supply_RK" />
+          </Key>
+          <Property Name="ID_Supply_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="ID_ProfessionalArea_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Time">
+          <Key>
+            <PropertyRef Name="ID_Time_RK" />
+          </Key>
+          <Property Name="ID_Time_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="TimeOfUse">
+          <Key>
+            <PropertyRef Name="ID_TimeOfUse_RK" />
+          </Key>
+          <Property Name="ID_TimeOfUse_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="7" />
+          <Property Name="BeginingTime" Type="time" Precision="7" />
+          <Property Name="EndingTime" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_Users_RK" />
+          </Key>
+          <Property Name="ID_Users_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Student_FK" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="ID_WorkShift_RK" />
+          </Key>
+          <Property Name="ID_WorkShift_RK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <Association Name="FK__Buffet_Di__ID_Bu__3711E04D">
+          <End Role="Buffet" Type="Self.Buffet" Multiplicity="0..1" />
+          <End Role="Buffet_Dish" Type="Self.Buffet_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buffet">
+              <PropertyRef Name="ID_Buffet_RK" />
+            </Principal>
+            <Dependent Role="Buffet_Dish">
+              <PropertyRef Name="ID_Buffet_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buffet_Di__ID_Di__38060486">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+          <End Role="Buffet_Dish" Type="Self.Buffet_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID_Dish_RK" />
+            </Principal>
+            <Dependent Role="Buffet_Dish">
+              <PropertyRef Name="ID_Dish_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class__ID_Employ__27CF9CBD">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee_RK" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ID_Employee_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Tim__ID_Cl__47484816">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Class_TimeOfUse" Type="Self.Class_TimeOfUse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID_Class_RK" />
+            </Principal>
+            <Dependent Role="Class_TimeOfUse">
+              <PropertyRef Name="ID_Class_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Tim__ID_Ti__483C6C4F">
+          <End Role="TimeOfUse" Type="Self.TimeOfUse" Multiplicity="0..1" />
+          <End Role="Class_TimeOfUse" Type="Self.Class_TimeOfUse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_RK" />
+            </Principal>
+            <Dependent Role="Class_TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Bu__409B4A87">
+          <End Role="Buffet" Type="Self.Buffet" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buffet">
+              <PropertyRef Name="ID_Buffet_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_Buffet_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Su__3FA7264E">
+          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="ID_Supply_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_Supply_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Ti__418F6EC0">
+          <End Role="TimeOfUse" Type="Self.TimeOfUse" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_TimeOfUse_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__ID_Com__1D520E4A">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="ID_Competence_RK" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_Competence_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__ID_Student__4B18D8FA">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_Student_RK" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="ID_Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__ID_Clas__2BA02DA1">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID_Class_RK" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ID_Class_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__ID_Stud__2AAC0968">
+          <End Role="StudentCategory" Type="Self.StudentCategory" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCategory">
+              <PropertyRef Name="ID_StudentCategory_RK" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ID_StudentCategory_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supply__ID_Profe__179934F4">
+          <End Role="ProfessionalArea" Type="Self.ProfessionalArea" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfessionalArea">
+              <PropertyRef Name="ID_ProfessionalArea_RK" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="ID_ProfessionalArea_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__ID_Studen__5596676D">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_Student_RK" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ID_Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_WorkShift">
+          <End Role="WorkShift" Type="Self.WorkShift" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkShift">
+              <PropertyRef Name="ID_WorkShift_RK" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_WorkShift_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Dish_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+          <End Role="Sale_Dish" Type="Self.Sale_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID_Dish_RK" />
+            </Principal>
+            <Dependent Role="Sale_Dish">
+              <PropertyRef Name="ID_Dish_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Dish_Sale">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+          <End Role="Sale_Dish" Type="Self.Sale_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="ID_Sale_RK" />
+            </Principal>
+            <Dependent Role="Sale_Dish">
+              <PropertyRef Name="ID_Sale_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buffet" EntityType="Self.Buffet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buffet_Dish" EntityType="Self.Buffet_Dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_TimeOfUse" EntityType="Self.Class_TimeOfUse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competence" EntityType="Self.Competence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DinningRoom" EntityType="Self.DinningRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfessionalArea" EntityType="Self.ProfessionalArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale_Dish" EntityType="Self.Sale_Dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentCategory" EntityType="Self.StudentCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Time" EntityType="Self.Time" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeOfUse" EntityType="Self.TimeOfUse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShift" EntityType="Self.WorkShift" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Buffet_Di__ID_Bu__3711E04D" Association="Self.FK__Buffet_Di__ID_Bu__3711E04D">
+            <End Role="Buffet" EntitySet="Buffet" />
+            <End Role="Buffet_Dish" EntitySet="Buffet_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buffet_Di__ID_Di__38060486" Association="Self.FK__Buffet_Di__ID_Di__38060486">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="Buffet_Dish" EntitySet="Buffet_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class__ID_Employ__27CF9CBD" Association="Self.FK__Class__ID_Employ__27CF9CBD">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Tim__ID_Cl__47484816" Association="Self.FK__Class_Tim__ID_Cl__47484816">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_TimeOfUse" EntitySet="Class_TimeOfUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Tim__ID_Ti__483C6C4F" Association="Self.FK__Class_Tim__ID_Ti__483C6C4F">
+            <End Role="TimeOfUse" EntitySet="TimeOfUse" />
+            <End Role="Class_TimeOfUse" EntitySet="Class_TimeOfUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Bu__409B4A87" Association="Self.FK__DinningRo__ID_Bu__409B4A87">
+            <End Role="Buffet" EntitySet="Buffet" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Su__3FA7264E" Association="Self.FK__DinningRo__ID_Su__3FA7264E">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Ti__418F6EC0" Association="Self.FK__DinningRo__ID_Ti__418F6EC0">
+            <End Role="TimeOfUse" EntitySet="TimeOfUse" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__ID_Com__1D520E4A" Association="Self.FK__Employee__ID_Com__1D520E4A">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__ID_Student__4B18D8FA" Association="Self.FK__Sale__ID_Student__4B18D8FA">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__ID_Clas__2BA02DA1" Association="Self.FK__Student__ID_Clas__2BA02DA1">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__ID_Stud__2AAC0968" Association="Self.FK__Student__ID_Stud__2AAC0968">
+            <End Role="StudentCategory" EntitySet="StudentCategory" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supply__ID_Profe__179934F4" Association="Self.FK__Supply__ID_Profe__179934F4">
+            <End Role="ProfessionalArea" EntitySet="ProfessionalArea" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__ID_Studen__5596676D" Association="Self.FK__Users__ID_Studen__5596676D">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_WorkShift" Association="Self.FK_Employee_WorkShift">
+            <End Role="WorkShift" EntitySet="WorkShift" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Dish_Dish" Association="Self.FK_Sale_Dish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="Sale_Dish" EntitySet="Sale_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Dish_Sale" Association="Self.FK_Sale_Dish_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Sale_Dish" EntitySet="Sale_Dish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buffet">
+          <Key>
+            <PropertyRef Name="ID_Buffet_RK" />
+          </Key>
+          <Property Name="ID_Buffet_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Buffet_Dish" Relationship="Self.FK__Buffet_Di__ID_Bu__3711E04D" FromRole="Buffet" ToRole="Buffet_Dish" />
+          <NavigationProperty Name="DinningRoom" Relationship="Self.FK__DinningRo__ID_Bu__409B4A87" FromRole="Buffet" ToRole="DinningRoom" />
+        </EntityType>
+        <EntityType Name="Buffet_Dish">
+          <Key>
+            <PropertyRef Name="ID_Buffet_Dish_RK" />
+          </Key>
+          <Property Name="ID_Buffet_Dish_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Buffet_FK" Type="Int32" />
+          <Property Name="ID_Dish_FK" Type="Int32" />
+          <NavigationProperty Name="Buffet" Relationship="Self.FK__Buffet_Di__ID_Bu__3711E04D" FromRole="Buffet_Dish" ToRole="Buffet" />
+          <NavigationProperty Name="Dish" Relationship="Self.FK__Buffet_Di__ID_Di__38060486" FromRole="Buffet_Dish" ToRole="Dish" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID_Class_RK" />
+          </Key>
+          <Property Name="ID_Class_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Employee_FK" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Class__ID_Employ__27CF9CBD" FromRole="Class" ToRole="Employee" />
+          <NavigationProperty Name="Class_TimeOfUse" Relationship="Self.FK__Class_Tim__ID_Cl__47484816" FromRole="Class" ToRole="Class_TimeOfUse" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Student__ID_Clas__2BA02DA1" FromRole="Class" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Class_TimeOfUse">
+          <Key>
+            <PropertyRef Name="ID_Class_TimeOfUse_RK" />
+          </Key>
+          <Property Name="ID_Class_TimeOfUse_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Class_FK" Type="Int32" />
+          <Property Name="ID_TimeOfUse_FK" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class_Tim__ID_Cl__47484816" FromRole="Class_TimeOfUse" ToRole="Class" />
+          <NavigationProperty Name="TimeOfUse" Relationship="Self.FK__Class_Tim__ID_Ti__483C6C4F" FromRole="Class_TimeOfUse" ToRole="TimeOfUse" />
+        </EntityType>
+        <EntityType Name="Competence">
+          <Key>
+            <PropertyRef Name="ID_Competence_RK" />
+          </Key>
+          <Property Name="ID_Competence_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__ID_Com__1D520E4A" FromRole="Competence" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="DinningRoom">
+          <Key>
+            <PropertyRef Name="ID_DinningRoom" />
+          </Key>
+          <Property Name="ID_DinningRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ID_Supply_FK" Type="Int32" />
+          <Property Name="ID_Buffet_FK" Type="Int32" />
+          <Property Name="ID_TimeOfUse_FK" Type="Int32" />
+          <NavigationProperty Name="Buffet" Relationship="Self.FK__DinningRo__ID_Bu__409B4A87" FromRole="DinningRoom" ToRole="Buffet" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK__DinningRo__ID_Su__3FA7264E" FromRole="DinningRoom" ToRole="Supply" />
+          <NavigationProperty Name="TimeOfUse" Relationship="Self.FK__DinningRo__ID_Ti__418F6EC0" FromRole="DinningRoom" ToRole="TimeOfUse" />
+        </EntityType>
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="ID_Dish_RK" />
+          </Key>
+          <Property Name="ID_Dish_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Buffet_Dish" Relationship="Self.FK__Buffet_Di__ID_Di__38060486" FromRole="Dish" ToRole="Buffet_Dish" />
+          <NavigationProperty Name="Sale_Dish" Relationship="Self.FK_Sale_Dish_Dish" FromRole="Dish" ToRole="Sale_Dish" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee_RK" />
+          </Key>
+          <Property Name="ID_Employee_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Competence_FK" Type="Int32" />
+          <Property Name="ID_WorkShift_FK" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class__ID_Employ__27CF9CBD" FromRole="Employee" ToRole="Class" />
+          <NavigationProperty Name="Competence" Relationship="Self.FK__Employee__ID_Com__1D520E4A" FromRole="Employee" ToRole="Competence" />
+          <NavigationProperty Name="WorkShift" Relationship="Self.FK_Employee_WorkShift" FromRole="Employee" ToRole="WorkShift" />
+        </EntityType>
+        <EntityType Name="ProfessionalArea">
+          <Key>
+            <PropertyRef Name="ID_ProfessionalArea_RK" />
+          </Key>
+          <Property Name="ID_ProfessionalArea_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__ID_Profe__179934F4" FromRole="ProfessionalArea" ToRole="Supply" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="ID_Sale_RK" />
+          </Key>
+          <Property Name="ID_Sale_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Student_FK" Type="Int32" />
+          <Property Name="ID_Sale_Dish_FK" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Sale__ID_Student__4B18D8FA" FromRole="Sale" ToRole="Student" />
+          <NavigationProperty Name="Sale_Dish" Relationship="Self.FK_Sale_Dish_Sale" FromRole="Sale" ToRole="Sale_Dish" />
+        </EntityType>
+        <EntityType Name="Sale_Dish">
+          <Key>
+            <PropertyRef Name="ID_SaleDish_RK" />
+          </Key>
+          <Property Name="ID_SaleDish_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sale_FK" Type="Int32" />
+          <Property Name="ID_Dish_FK" Type="Int32" />
+          <NavigationProperty Name="Dish" Relationship="Self.FK_Sale_Dish_Dish" FromRole="Sale_Dish" ToRole="Dish" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK_Sale_Dish_Sale" FromRole="Sale_Dish" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID_Student_RK" />
+          </Key>
+          <Property Name="ID_Student_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ID_StudentCategory_FK" Type="Int32" />
+          <Property Name="ID_Class_FK" Type="Int32" />
+          <Property Name="Cash" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Student__ID_Clas__2BA02DA1" FromRole="Student" ToRole="Class" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__ID_Student__4B18D8FA" FromRole="Student" ToRole="Sale" />
+          <NavigationProperty Name="StudentCategory" Relationship="Self.FK__Student__ID_Stud__2AAC0968" FromRole="Student" ToRole="StudentCategory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__ID_Studen__5596676D" FromRole="Student" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="StudentCategory">
+          <Key>
+            <PropertyRef Name="ID_StudentCategory_RK" />
+          </Key>
+          <Property Name="ID_StudentCategory_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Student__ID_Stud__2AAC0968" FromRole="StudentCategory" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID_Supply_RK" />
+          </Key>
+          <Property Name="ID_Supply_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ID_ProfessionalArea_FK" Type="Int32" />
+          <NavigationProperty Name="DinningRoom" Relationship="Self.FK__DinningRo__ID_Su__3FA7264E" FromRole="Supply" ToRole="DinningRoom" />
+          <NavigationProperty Name="ProfessionalArea" Relationship="Self.FK__Supply__ID_Profe__179934F4" FromRole="Supply" ToRole="ProfessionalArea" />
+        </EntityType>
+        <EntityType Name="Time">
+          <Key>
+            <PropertyRef Name="ID_Time_RK" />
+          </Key>
+          <Property Name="ID_Time_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="TimeOfUse">
+          <Key>
+            <PropertyRef Name="ID_TimeOfUse_RK" />
+          </Key>
+          <Property Name="ID_TimeOfUse_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+          <Property Name="BeginingTime" Type="Time" Precision="7" />
+          <Property Name="EndingTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="Class_TimeOfUse" Relationship="Self.FK__Class_Tim__ID_Ti__483C6C4F" FromRole="TimeOfUse" ToRole="Class_TimeOfUse" />
+          <NavigationProperty Name="DinningRoom" Relationship="Self.FK__DinningRo__ID_Ti__418F6EC0" FromRole="TimeOfUse" ToRole="DinningRoom" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_Users_RK" />
+          </Key>
+          <Property Name="ID_Users_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Student_FK" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Users__ID_Studen__5596676D" FromRole="Users" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="ID_WorkShift_RK" />
+          </Key>
+          <Property Name="ID_WorkShift_RK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_WorkShift" FromRole="WorkShift" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Buffet_Di__ID_Bu__3711E04D">
+          <End Role="Buffet" Type="Self.Buffet" Multiplicity="0..1" />
+          <End Role="Buffet_Dish" Type="Self.Buffet_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buffet">
+              <PropertyRef Name="ID_Buffet_RK" />
+            </Principal>
+            <Dependent Role="Buffet_Dish">
+              <PropertyRef Name="ID_Buffet_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Bu__409B4A87">
+          <End Role="Buffet" Type="Self.Buffet" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buffet">
+              <PropertyRef Name="ID_Buffet_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_Buffet_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buffet_Di__ID_Di__38060486">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+          <End Role="Buffet_Dish" Type="Self.Buffet_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID_Dish_RK" />
+            </Principal>
+            <Dependent Role="Buffet_Dish">
+              <PropertyRef Name="ID_Dish_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class__ID_Employ__27CF9CBD">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee_RK" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ID_Employee_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Tim__ID_Cl__47484816">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Class_TimeOfUse" Type="Self.Class_TimeOfUse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID_Class_RK" />
+            </Principal>
+            <Dependent Role="Class_TimeOfUse">
+              <PropertyRef Name="ID_Class_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__ID_Clas__2BA02DA1">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID_Class_RK" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ID_Class_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Tim__ID_Ti__483C6C4F">
+          <End Role="TimeOfUse" Type="Self.TimeOfUse" Multiplicity="0..1" />
+          <End Role="Class_TimeOfUse" Type="Self.Class_TimeOfUse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_RK" />
+            </Principal>
+            <Dependent Role="Class_TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__ID_Com__1D520E4A">
+          <End Role="Competence" Type="Self.Competence" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competence">
+              <PropertyRef Name="ID_Competence_RK" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_Competence_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Su__3FA7264E">
+          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="ID_Supply_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_Supply_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DinningRo__ID_Ti__418F6EC0">
+          <End Role="TimeOfUse" Type="Self.TimeOfUse" Multiplicity="0..1" />
+          <End Role="DinningRoom" Type="Self.DinningRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfUse">
+              <PropertyRef Name="ID_TimeOfUse_RK" />
+            </Principal>
+            <Dependent Role="DinningRoom">
+              <PropertyRef Name="ID_TimeOfUse_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Dish_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+          <End Role="Sale_Dish" Type="Self.Sale_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID_Dish_RK" />
+            </Principal>
+            <Dependent Role="Sale_Dish">
+              <PropertyRef Name="ID_Dish_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_WorkShift">
+          <End Role="WorkShift" Type="Self.WorkShift" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkShift">
+              <PropertyRef Name="ID_WorkShift_RK" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_WorkShift_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supply__ID_Profe__179934F4">
+          <End Role="ProfessionalArea" Type="Self.ProfessionalArea" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfessionalArea">
+              <PropertyRef Name="ID_ProfessionalArea_RK" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="ID_ProfessionalArea_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__ID_Student__4B18D8FA">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_Student_RK" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="ID_Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Dish_Sale">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+          <End Role="Sale_Dish" Type="Self.Sale_Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="ID_Sale_RK" />
+            </Principal>
+            <Dependent Role="Sale_Dish">
+              <PropertyRef Name="ID_Sale_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__ID_Stud__2AAC0968">
+          <End Role="StudentCategory" Type="Self.StudentCategory" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentCategory">
+              <PropertyRef Name="ID_StudentCategory_RK" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ID_StudentCategory_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__ID_Studen__5596676D">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_Student_RK" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ID_Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administration" EntityType="Self.Administration" />
+          <EntitySet Name="Buffet" EntityType="Self.Buffet" />
+          <EntitySet Name="Buffet_Dish" EntityType="Self.Buffet_Dish" />
+          <EntitySet Name="Class" EntityType="Self.Class" />
+          <EntitySet Name="Class_TimeOfUse" EntityType="Self.Class_TimeOfUse" />
+          <EntitySet Name="Competence" EntityType="Self.Competence" />
+          <EntitySet Name="DinningRoom" EntityType="Self.DinningRoom" />
+          <EntitySet Name="Dish" EntityType="Self.Dish" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="ProfessionalArea" EntityType="Self.ProfessionalArea" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" />
+          <EntitySet Name="Sale_Dish" EntityType="Self.Sale_Dish" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="StudentCategory" EntityType="Self.StudentCategory" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" />
+          <EntitySet Name="Time" EntityType="Self.Time" />
+          <EntitySet Name="TimeOfUse" EntityType="Self.TimeOfUse" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WorkShift" EntityType="Self.WorkShift" />
+          <AssociationSet Name="FK__Buffet_Di__ID_Bu__3711E04D" Association="Self.FK__Buffet_Di__ID_Bu__3711E04D">
+            <End Role="Buffet" EntitySet="Buffet" />
+            <End Role="Buffet_Dish" EntitySet="Buffet_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Bu__409B4A87" Association="Self.FK__DinningRo__ID_Bu__409B4A87">
+            <End Role="Buffet" EntitySet="Buffet" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buffet_Di__ID_Di__38060486" Association="Self.FK__Buffet_Di__ID_Di__38060486">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="Buffet_Dish" EntitySet="Buffet_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class__ID_Employ__27CF9CBD" Association="Self.FK__Class__ID_Employ__27CF9CBD">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Tim__ID_Cl__47484816" Association="Self.FK__Class_Tim__ID_Cl__47484816">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_TimeOfUse" EntitySet="Class_TimeOfUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__ID_Clas__2BA02DA1" Association="Self.FK__Student__ID_Clas__2BA02DA1">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Tim__ID_Ti__483C6C4F" Association="Self.FK__Class_Tim__ID_Ti__483C6C4F">
+            <End Role="TimeOfUse" EntitySet="TimeOfUse" />
+            <End Role="Class_TimeOfUse" EntitySet="Class_TimeOfUse" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__ID_Com__1D520E4A" Association="Self.FK__Employee__ID_Com__1D520E4A">
+            <End Role="Competence" EntitySet="Competence" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Su__3FA7264E" Association="Self.FK__DinningRo__ID_Su__3FA7264E">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DinningRo__ID_Ti__418F6EC0" Association="Self.FK__DinningRo__ID_Ti__418F6EC0">
+            <End Role="TimeOfUse" EntitySet="TimeOfUse" />
+            <End Role="DinningRoom" EntitySet="DinningRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Dish_Dish" Association="Self.FK_Sale_Dish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="Sale_Dish" EntitySet="Sale_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_WorkShift" Association="Self.FK_Employee_WorkShift">
+            <End Role="WorkShift" EntitySet="WorkShift" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supply__ID_Profe__179934F4" Association="Self.FK__Supply__ID_Profe__179934F4">
+            <End Role="ProfessionalArea" EntitySet="ProfessionalArea" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__ID_Student__4B18D8FA" Association="Self.FK__Sale__ID_Student__4B18D8FA">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Dish_Sale" Association="Self.FK_Sale_Dish_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Sale_Dish" EntitySet="Sale_Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__ID_Stud__2AAC0968" Association="Self.FK__Student__ID_Stud__2AAC0968">
+            <End Role="StudentCategory" EntitySet="StudentCategory" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__ID_Studen__5596676D" Association="Self.FK__Users__ID_Studen__5596676D">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Administration">
+            <EntityTypeMapping TypeName="Model.Administration">
+              <MappingFragment StoreEntitySet="Administration">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buffet">
+            <EntityTypeMapping TypeName="Model.Buffet">
+              <MappingFragment StoreEntitySet="Buffet">
+                <ScalarProperty Name="ID_Buffet_RK" ColumnName="ID_Buffet_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buffet_Dish">
+            <EntityTypeMapping TypeName="Model.Buffet_Dish">
+              <MappingFragment StoreEntitySet="Buffet_Dish">
+                <ScalarProperty Name="ID_Buffet_Dish_RK" ColumnName="ID_Buffet_Dish_RK" />
+                <ScalarProperty Name="ID_Buffet_FK" ColumnName="ID_Buffet_FK" />
+                <ScalarProperty Name="ID_Dish_FK" ColumnName="ID_Dish_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class">
+            <EntityTypeMapping TypeName="Model.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ID_Class_RK" ColumnName="ID_Class_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Employee_FK" ColumnName="ID_Employee_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_TimeOfUse">
+            <EntityTypeMapping TypeName="Model.Class_TimeOfUse">
+              <MappingFragment StoreEntitySet="Class_TimeOfUse">
+                <ScalarProperty Name="ID_Class_TimeOfUse_RK" ColumnName="ID_Class_TimeOfUse_RK" />
+                <ScalarProperty Name="ID_Class_FK" ColumnName="ID_Class_FK" />
+                <ScalarProperty Name="ID_TimeOfUse_FK" ColumnName="ID_TimeOfUse_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competence">
+            <EntityTypeMapping TypeName="Model.Competence">
+              <MappingFragment StoreEntitySet="Competence">
+                <ScalarProperty Name="ID_Competence_RK" ColumnName="ID_Competence_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DinningRoom">
+            <EntityTypeMapping TypeName="Model.DinningRoom">
+              <MappingFragment StoreEntitySet="DinningRoom">
+                <ScalarProperty Name="ID_DinningRoom" ColumnName="ID_DinningRoom" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Supply_FK" ColumnName="ID_Supply_FK" />
+                <ScalarProperty Name="ID_Buffet_FK" ColumnName="ID_Buffet_FK" />
+                <ScalarProperty Name="ID_TimeOfUse_FK" ColumnName="ID_TimeOfUse_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dish">
+            <EntityTypeMapping TypeName="Model.Dish">
+              <MappingFragment StoreEntitySet="Dish">
+                <ScalarProperty Name="ID_Dish_RK" ColumnName="ID_Dish_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID_Employee_RK" ColumnName="ID_Employee_RK" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="ID_Competence_FK" ColumnName="ID_Competence_FK" />
+                <ScalarProperty Name="ID_WorkShift_FK" ColumnName="ID_WorkShift_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfessionalArea">
+            <EntityTypeMapping TypeName="Model.ProfessionalArea">
+              <MappingFragment StoreEntitySet="ProfessionalArea">
+                <ScalarProperty Name="ID_ProfessionalArea_RK" ColumnName="ID_ProfessionalArea_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="Model.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="ID_Sale_RK" ColumnName="ID_Sale_RK" />
+                <ScalarProperty Name="ID_Student_FK" ColumnName="ID_Student_FK" />
+                <ScalarProperty Name="ID_Sale_Dish_FK" ColumnName="ID_Sale_Dish_FK" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale_Dish">
+            <EntityTypeMapping TypeName="Model.Sale_Dish">
+              <MappingFragment StoreEntitySet="Sale_Dish">
+                <ScalarProperty Name="ID_SaleDish_RK" ColumnName="ID_SaleDish_RK" />
+                <ScalarProperty Name="ID_Sale_FK" ColumnName="ID_Sale_FK" />
+                <ScalarProperty Name="ID_Dish_FK" ColumnName="ID_Dish_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="Model.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="ID_Student_RK" ColumnName="ID_Student_RK" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="ID_StudentCategory_FK" ColumnName="ID_StudentCategory_FK" />
+                <ScalarProperty Name="ID_Class_FK" ColumnName="ID_Class_FK" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentCategory">
+            <EntityTypeMapping TypeName="Model.StudentCategory">
+              <MappingFragment StoreEntitySet="StudentCategory">
+                <ScalarProperty Name="ID_StudentCategory_RK" ColumnName="ID_StudentCategory_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supply">
+            <EntityTypeMapping TypeName="Model.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="ID_Supply_RK" ColumnName="ID_Supply_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_ProfessionalArea_FK" ColumnName="ID_ProfessionalArea_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Time">
+            <EntityTypeMapping TypeName="Model.Time">
+              <MappingFragment StoreEntitySet="Time">
+                <ScalarProperty Name="ID_Time_RK" ColumnName="ID_Time_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeOfUse">
+            <EntityTypeMapping TypeName="Model.TimeOfUse">
+              <MappingFragment StoreEntitySet="TimeOfUse">
+                <ScalarProperty Name="ID_TimeOfUse_RK" ColumnName="ID_TimeOfUse_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BeginingTime" ColumnName="BeginingTime" />
+                <ScalarProperty Name="EndingTime" ColumnName="EndingTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_Users_RK" ColumnName="ID_Users_RK" />
+                <ScalarProperty Name="ID_Student_FK" ColumnName="ID_Student_FK" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShift">
+            <EntityTypeMapping TypeName="Model.WorkShift">
+              <MappingFragment StoreEntitySet="WorkShift">
+                <ScalarProperty Name="ID_WorkShift_RK" ColumnName="ID_WorkShift_RK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0cc2cb842b67465f9f428ac835e2e82e" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Administration" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Buffet" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Buffet_Dish" Width="1.5" PointX="15" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Class" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Class_TimeOfUse" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Competence" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DinningRoom" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Dish" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProfessionalArea" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="12.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sale_Dish" Width="1.5" PointX="15" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Student" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.StudentCategory" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Supply" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Time" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TimeOfUse" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="12.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WorkShift" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Buffet_Di__ID_Bu__3711E04D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__DinningRo__ID_Bu__409B4A87" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Buffet_Di__ID_Di__38060486" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Class__ID_Employ__27CF9CBD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Class_Tim__ID_Cl__47484816" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Student__ID_Clas__2BA02DA1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Class_Tim__ID_Ti__483C6C4F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Employee__ID_Com__1D520E4A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__DinningRo__ID_Su__3FA7264E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__DinningRo__ID_Ti__418F6EC0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sale_Dish_Dish" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employee_WorkShift" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Supply__ID_Profe__179934F4" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Sale__ID_Student__4B18D8FA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sale_Dish_Sale" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Student__ID_Stud__2AAC0968" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Users__ID_Studen__5596676D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

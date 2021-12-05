@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="CanteenInGeneralEducationInstitution.MVVM.View.Admin.SaleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CanteenInGeneralEducationInstitution.MVVM.View.Admin"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="525" d:DesignWidth="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="DGridSale" AutoGenerateColumns="False"
+                  CanUserResizeRows="False" CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Grid.Row="0" Grid.RowSpan="5"
+                  Grid.ColumnSpan="3"
+                  Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Width="*" Binding="{Binding ID_Sale_RK}" />
+                <DataGridTextColumn Header="Студент" Width="*" Binding="{Binding Student.FirstName}"/>
+                <DataGridTextColumn Header="Цена" Width="*" Binding="{Binding Price}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox x:Name="txtNum"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 materialDesign:HintAssist.Hint="Введите номер"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+        <TextBox x:Name="txtLName"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4" Grid.Row="1"
+                  materialDesign:HintAssist.Hint="Введите фамилию"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+        
+
+        
+
+        
+
+        <TextBox x:Name="txtPrice"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 Grid.Row="2"
+                  materialDesign:HintAssist.Hint="Введите цену"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+        <Button Content="Добавить" FontSize="20"
+                Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Add_Click"/>
+        <Button Content="Удалить" FontSize="20"
+                Grid.Row="5" Grid.Column="1" Grid.RowSpan="2"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Delete_Click"/>
+        <Button Content="Обновить" FontSize="20"
+                Grid.Row="5" Grid.Column="2" Grid.RowSpan="2"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Update_Click"/>
+    </Grid>
+</UserControl>
